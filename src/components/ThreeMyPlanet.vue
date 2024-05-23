@@ -60,20 +60,6 @@ export default defineComponent({
             }
         };
 
-        const handleMouseMove = (event: { currentTarget: any; clientX: number; clientY: number; }) => {
-            const element = event.currentTarget;
-            // canvas要素上のXY座標
-            const x = event.clientX - element.offsetLeft;
-            const y = event.clientY - element.offsetTop;
-            // canvas要素の幅・高さ
-            const w = element.offsetWidth;
-            const h = element.offsetHeight;
-
-            // -1〜+1の範囲で現在のマウス座標を登録する
-            mouse.x = ( x / w ) * 2 - 1;
-            mouse.y = -( y / h ) * 2 + 1;
-        }
-
         const animate = () => {
             const frame = () => {
                 controls.update();
@@ -125,6 +111,20 @@ export default defineComponent({
 
             const mesh = new Points(geometry, material);
             scene.add(mesh);
+        }
+
+        const handleMouseMove = (event: { currentTarget: any; clientX: number; clientY: number; }) => {
+            const element = event.currentTarget;
+            // canvas要素上のXY座標
+            const x = event.clientX - element.offsetLeft;
+            const y = event.clientY - element.offsetTop;
+            // canvas要素の幅・高さ
+            const w = element.offsetWidth;
+            const h = element.offsetHeight;
+
+            // -1〜+1の範囲で現在のマウス座標を登録する
+            mouse.x = ( x / w ) * 2 - 1;
+            mouse.y = -( y / h ) * 2 + 1;
         }
 
         const raycastCheck = () => {
