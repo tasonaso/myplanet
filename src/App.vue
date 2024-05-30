@@ -2,7 +2,7 @@
   <ThreeMyPlanet />
 </template>
 
-<script lang="ts">
+<script>
   import { defineComponent } from "vue";
   import ThreeMyPlanet from "./components/ThreeMyPlanet.vue";
 
